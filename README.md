@@ -3,4 +3,4 @@
 # langchain
 # pinecone
 # flask or fast api
-# aws ci - cd
+# aws ci - cd and docker
