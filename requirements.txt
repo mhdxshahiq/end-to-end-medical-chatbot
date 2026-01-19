@@ -1,0 +1,19 @@
+# Core Frameworks
+langchain
+langchain-community
+pypdf
+unstructured
+
+
+# AI & Vector DB
+sentence-transformers==3.3.1
+langchain-google-genai==4.2.0
+langchain-pinecone==0.2.8
+
+# Core Frameworks
+fastapi==0.115.6
+flask==3.1.1
+
+# Utilities
+pypdf==5.1.0
+python-dotenv==1.0.1
