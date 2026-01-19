@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: #f0f2f5;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chat-card {
+    width: 100%;
+    max-width: 400px;
+    height: 600px;
+    background: #fff;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+/* Header */
+.chat-header {
+    background: #007bff;
+    color: #fff;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.avatar-box {
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+}
+
+.user-status h2 {
+    font-size: 1rem;
+}
+
+.user-status span {
+    font-size: 0.75rem;
+    opacity: 0.8;
+}
+
+/* Chat Main */
+.chat-area {
+    flex: 1;
+    background: #f8f9fa;
+    padding: 16px;
+    overflow-y: auto;
+}
+
+/* Footer Input */
+.chat-footer {
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-top: 1px solid #eee;
+}
+
+.chat-footer input {
+    flex: 1;
+    border: none;
+    background: #f1f3f4;
+    padding: 10px 16px;
+    border-radius: 20px;
+    outline: none;
+}
+
+.icon-btn, .send-btn {
+    background: none;
+    border: none;
+    font-size: 22px;
+    color: #007bff;
+    cursor: pointer;
+}
+
+.send-btn:hover {
+    color: #0056b3;
+}
