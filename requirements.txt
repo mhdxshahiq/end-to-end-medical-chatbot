@@ -14,5 +14,7 @@ langchain-pinecone==0.2.8
 flask==3.1.1
 fastapi==0.115.6
 
+
+
 # Utilities
 python-dotenv==1.0.1
