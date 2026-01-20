@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediFlow AI | Premium Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+    <div class="app-layout">
+        <div class="chat-surface">
+            <header class="chat-navbar">
+                <div class="brand-identity">
+                    <div class="logo-shield">
+                        <i class="ph-fill ph-shield-plus"></i>
+                        <div class="pulse-ring"></div>
+                    </div>
+                    <div class="titles">
+                        <h1>MediFlow <span>AI</span></h1>
+                        <p class="status-line"><span class="dot"></span> Online Assistant</p>
+                    </div>
+                </div>
+                <div class="utility-icons">
+                    <i class="ph ph-gear-six"></i>
+                </div>
+            </header>
+
+            <main class="chat-feed" id="messageArea">
+                <div class="msg-container bot">
+                    <div class="msg-bubble">
+                        Welcome to your secure health portal. How may I assist you with your medical inquiries today?
+                    </div>
+                </div>
+            </main>
+
+            <footer class="chat-controls">
+                <div id="typing" class="typing-pill" style="display: none;">
+                    <span></span><span></span><span></span>
+                </div>
+                <form id="messageForm" class="input-form">
+                    <div class="input-capsule">
+                        <input type="text" id="text" placeholder="Describe symptoms or ask a question..." autocomplete="off">
+                        <button type="submit" class="action-btn">
+                            <i class="ph-bold ph-paper-plane-right"></i>
+                        </button>
+                    </div>
+                </form>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            function autoScroll() {
+                const feed = $("#messageArea");
+                feed.animate({ scrollTop: feed[0].scrollHeight }, 500);
+            }
+
+            $("#messageForm").on("submit", function(e) {
+                e.preventDefault();
+                const msg = $("#text").val();
+                if (!msg.trim()) return;
+
+                $("#messageArea").append(`<div class="msg-container user"><div class="msg-bubble">${msg}</div></div>`);
+                $("#text").val("");
+                $("#typing").fadeIn(200);
+                autoScroll();
+
+                $.ajax({
+                    data: { msg: msg },
+                    type: "POST",
+                    url: "/get",
+                }).done(function(data) {
+                    $("#typing").hide();
+                    $("#messageArea").append(`<div class="msg-container bot"><div class="msg-bubble">${data}</div></div>`);
+                    autoScroll();
+                });
+            });
+        });
+    </script>
+</body>
+</html>
